@@ -1,12 +1,10 @@
-##WEEKLY
-##HORROR
-
 import json
 import requests
 import urllib2
+import re
+import markdown
 
 MAIN_URL = "http://www.reddit.com"
-##MAIN_URL + "/r/" + 'subredditName' + ".json"
 default_list = list()  #List of subreddits to be searched.
 subreddit_dictionary = dict()  #Mapping from subreddit name to subreddit class (and the corresponding list of pages).
 
@@ -31,6 +29,7 @@ def getStories(subreddit):
 
 
 def search(sr_list):
+    global subreddit_dictionary
     header = {'User-Agent' : 'My borrt yo'}
     subreddit_dictionary.clear()
     for subreddit in sr_list:
@@ -39,14 +38,15 @@ def search(sr_list):
         #print(r.status_code)
         data = json.loads(r.text)
         length = len(data['data']['children'])
-        length = min(length, 10)
+        length = min(length, 11)
         pageList = list()
         for i in range(0, length):
             element = data['data']['children'][i]
             if element['data']['selftext']:
                 text = element['data']['selftext']
                 author = element['data']['author']
-                title= element['data']['title']
+                title= re.sub("([\(\[]).*?([\)\]])", '', element['data']['title']) #regexp to strip tags (ie, content inside parentheses)
+                title = title.lstrip(' ') #strips any leading whitespace, to ensure the title is later coloured correctly.
                 url= element['data']['url']
 
                 p = Page(url, text, title, author)
@@ -63,11 +63,11 @@ def isValidSubreddit(name):
 
 def setup():
     #default_list.append("No Sleep")
-    #default_list.append("Short Scary Stories")
+    default_list.append("Short Scary Stories")
     #default_list.append("Creepy Pasta")
     #default_list.append("Dark Tales")
     #default_list.append("Horror")
-    default_list.append("Lovecraft")
+    #default_list.append("Lovecraft")
     #default_list.append("The Truth Is Here")
     #default_list.append("True Creepy")
     #default_list.append("Glitch_in_the_Matrix")

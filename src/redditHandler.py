@@ -7,6 +7,8 @@ import markdown
 MAIN_URL = "http://www.reddit.com"
 default_list = list()  #List of subreddits to be searched.
 subreddit_dictionary = dict()  #Mapping from subreddit name to subreddit class (and the corresponding list of pages).
+url_mapping = dict()
+url_score = dict()
 
 class Page:
     def __init__(self, url, text, title, author):
@@ -50,6 +52,7 @@ def search(sr_list):
                 url= element['data']['url']
 
                 p = Page(url, text, title, author)
+                url_mapping[url] = p
                 pageList.append(p)
 
         subreddit_dictionary[subreddit] = pageList

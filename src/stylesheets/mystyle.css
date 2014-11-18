@@ -6,7 +6,7 @@ html{
   font-size:75px;
   font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
   text-align:center;
-  padding-top:75px;
+  padding-top:  80px;
 }
 
 #blueTitle{
@@ -19,14 +19,14 @@ html{
 }
 
 .searchBar{
-  padding-top:20px;
+  padding-top:50px;
   position:fixed;
   left:34%;
   margin-left:-62px;
 }
 
 .continueBar{
-  padding-top:20px;
+  padding-top:50px;
   position:fixed;
   left:66%;
   margin-left:-62px;
@@ -36,8 +36,8 @@ html{
   
   font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
   font-size:25px;
-  width:1300px;
-  height:600px;
+  width:47%;
+  height:550px;
   line-height: 200%;
   margin: 0 auto;
   overflow:auto;

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <link rel="stylesheet" title="compact" type="text/css" href="/stylesheets/mystyle.css">
+    <title>Weekly Horror</title>
+    </head>
+    <body>
+        <div class = "Icons">
+            <span id = "twitter"><img src = "/images/GitHub-Mark.png"></span> <span id = "github"><img src = "/images/twitter_circle.png"></span>
+        </div>
+        <div class = "Container">
+            <div class = "Title">
+                <span id = "blackTitle">{{first|safe}} {{rest|safe}}</span> <span id = "blueTitle"></span>
+            </div>
+            </br>
+
+            <div class = "storyArea">
+            {{content|safe}}
+            </div>
+
+            <div class = "searchBar">
+                <a href="/search" class="demo-pricing demo-pricing-2">Similar Scare</a>
+
+            </div>
+
+            <div class = "continueBar">
+                <a href="/search" class="demo-pricing demo-pricing-2">New Scare</a>
+            </div>
+        </div>
+    </body>
+</html> 
